@@ -1,0 +1,182 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "personal projects",
+        "title": "bastion server",
+        "termsOfService": "https://github.com/nanzm",
+        "contact": {
+            "name": "nan",
+            "url": "https://nancode.cn",
+            "email": "msg@nancode.cn"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/stat/admin/create": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "创建管理员"
+            }
+        },
+        "/api/stat/admin/info": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "管理员信息"
+            }
+        },
+        "/api/stat/admin/list": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "所有管理员"
+            }
+        },
+        "/api/stat/admin/login": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "管理员登录"
+            }
+        },
+        "/api/stat/admin/update": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "管理员信息更新"
+            }
+        },
+        "/api/stat/behavior": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "上报打点"
+            }
+        },
+        "/api/stat/behavior/:id": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "根据id查找打点"
+            }
+        },
+        "/api/stat/behaviors": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "查找所有打点"
+            }
+        },
+        "/api/stat/device/:uid": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "根据id查找错误"
+            }
+        },
+        "/api/stat/error/:id": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "根据id查找错误"
+            }
+        },
+        "/api/stat/errors": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "查找所有错误"
+            },
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "errlock上报"
+            }
+        },
+        "/api/stat/project": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "创建项目"
+            }
+        },
+        "/api/stat/project/:id": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "查找项目"
+            }
+        },
+        "/api/stat/projects": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "查找所有项目"
+            }
+        },
+        "/go/sys/info": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "系统信息",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.Response"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "response.Response": {
+            "type": "object",
+            "properties": {
+                "_trace_id": {
+                    "type": "object"
+                },
+                "_ts": {
+                    "type": "integer"
+                },
+                "code": {
+                    "type": "integer"
+                },
+                "error": {
+                    "type": "object"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "object"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
