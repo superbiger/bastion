@@ -1,14 +1,14 @@
 package dao
 
 import (
-	"bastion/database"
-	"bastion/pkg/datasource"
+	"bastion/internal/datasource"
+	"bastion/models"
 )
 
-func FindAllBehaviors(pagesize, page int, order string) (rows []database.StatBehavior, total int, e error) {
+func FindAllBehaviors(pagesize, page int, order string) (rows []models.StatBehavior, total int, e error) {
 	offset := (page - 1) * pagesize
 
-	var data []database.StatBehavior
+	var data []models.StatBehavior
 	var count int
 
 	if order == "" {
@@ -16,7 +16,7 @@ func FindAllBehaviors(pagesize, page int, order string) (rows []database.StatBeh
 	}
 
 	var err error
-	err = datasource.GormPool.Model(&database.StatBehavior{}).Order(order).Count(&count).
+	err = datasource.GormPool.Model(&models.StatBehavior{}).Order(order).Count(&count).
 		Offset(offset).Limit(pagesize).Find(&data).Error
 
 	if err != nil {
@@ -26,13 +26,13 @@ func FindAllBehaviors(pagesize, page int, order string) (rows []database.StatBeh
 	return data, count, nil
 }
 
-func CreateBehaviors(info database.StatBehavior) error {
+func CreateBehaviors(info models.StatBehavior) error {
 	err := datasource.GormPool.Create(&info).Error
 	return err
 }
 
-func UpdateBehaviors(info database.StatBehavior) error {
-	err := datasource.GormPool.Model(&database.StatBehavior{}).Updates(&info).Error
+func UpdateBehaviors(info models.StatBehavior) error {
+	err := datasource.GormPool.Model(&models.StatBehavior{}).Updates(&info).Error
 	return err
 }
 

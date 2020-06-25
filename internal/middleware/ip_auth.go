@@ -1,8 +1,8 @@
 package middleware
 
 import (
-	"bastion/pkg/errno"
-	"bastion/pkg/response"
+	"bastion/common/errno"
+	"bastion/internal/response"
 	"errors"
 	"fmt"
 	"github.com/gin-gonic/gin"

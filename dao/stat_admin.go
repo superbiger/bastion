@@ -1,19 +1,19 @@
 package dao
 
 import (
-	"bastion/database"
-	"bastion/pkg/datasource"
+	"bastion/internal/datasource"
+	"bastion/models"
 )
 
-func CreateAdminUser(info database.StatAdmin) error {
+func CreateAdminUser(info models.StatAdmin) error {
 	err := datasource.GormPool.Create(&info).Error
 	return err
 }
 
-func FindAllAdminUsers(pagesize, page int, order string) (rows []*database.StatAdmin, total int, e error) {
+func FindAllAdminUsers(pagesize, page int, order string) (rows []*models.StatAdmin, total int, e error) {
 	offset := (page - 1) * pagesize
 
-	var users []*database.StatAdmin
+	var users []*models.StatAdmin
 	var count int
 
 	if order == "" {
@@ -31,8 +31,8 @@ func FindAllAdminUsers(pagesize, page int, order string) (rows []*database.StatA
 	return users, count, nil
 }
 
-func FindAdminUserByUserName(username string) (*database.StatAdmin, error) {
-	user := &database.StatAdmin{}
+func FindAdminUserByUserName(username string) (*models.StatAdmin, error) {
+	user := &models.StatAdmin{}
 	err := datasource.GormPool.Where("username = ?", username).First(&user).Error
 	if err != nil {
 		return nil, err
@@ -40,8 +40,8 @@ func FindAdminUserByUserName(username string) (*database.StatAdmin, error) {
 	return user, nil
 }
 
-func FindAdminUserById(id int) (*database.StatAdmin, error) {
-	user := &database.StatAdmin{}
+func FindAdminUserById(id int) (*models.StatAdmin, error) {
+	user := &models.StatAdmin{}
 	err := datasource.GormPool.Where("id = ?", id).First(&user).Error
 
 	if err != nil {
@@ -51,7 +51,7 @@ func FindAdminUserById(id int) (*database.StatAdmin, error) {
 	return user, nil
 }
 
-func UpdateAdminUser(info database.StatAdmin) error {
-	err := datasource.GormPool.Model(&database.StatAdmin{}).Updates(&info).Error
+func UpdateAdminUser(info models.StatAdmin) error {
+	err := datasource.GormPool.Model(&models.StatAdmin{}).Updates(&info).Error
 	return err
 }

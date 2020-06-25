@@ -14,17 +14,14 @@ require (
 	github.com/go-playground/locales v0.13.0
 	github.com/go-playground/universal-translator v0.17.0
 	github.com/go-redis/redis/v7 v7.0.0-beta.5
-	github.com/go-resty/resty/v2 v2.1.0
-	github.com/go-sql-driver/mysql v1.4.1
+	github.com/go-sql-driver/mysql v1.5.0
 	github.com/go-xorm/xorm v0.7.9
 	github.com/golang/protobuf v1.3.5 // indirect
 	github.com/gorilla/sessions v1.2.0 // indirect
-	github.com/graphql-go/graphql v0.7.9 // indirect
 	github.com/jinzhu/gorm v1.9.11
-	github.com/json-iterator/go v1.1.9
 	github.com/lib/pq v1.3.0 // indirect
 	github.com/mattn/go-sqlite3 v2.0.2+incompatible // indirect
-	github.com/medivhzhan/weapp/v2 v2.0.1
+	github.com/olivere/elastic/v7 v7.0.17
 	github.com/onsi/ginkgo v1.10.3 // indirect
 	github.com/onsi/gomega v1.7.1 // indirect
 	github.com/prometheus/client_golang v1.5.1
@@ -34,11 +31,9 @@ require (
 	github.com/swaggo/files v0.0.0-20190704085106-630677cd5c14
 	github.com/swaggo/gin-swagger v1.2.0
 	github.com/swaggo/swag v1.6.4
-	github.com/teris-io/shortid v0.0.0-20171029131806-771a37caa5cf
 	golang.org/x/crypto v0.0.0-20191219195013-becbf705a915 // indirect
 	golang.org/x/sys v0.0.0-20200406155108-e3b113bbe6a4 // indirect
 	golang.org/x/tools v0.0.0-20191216173652-a0e659d51361 // indirect
-	google.golang.org/appengine v1.6.5 // indirect
 	gopkg.in/go-playground/validator.v9 v9.31.0
 	xorm.io/core v0.7.2-0.20190928055935-90aeac8d08eb
 )

@@ -1,8 +1,8 @@
 package middleware
 
 import (
-	"bytes"
 	"bastion/utils"
+	"bytes"
 	"github.com/georgehao/log"
 	"github.com/gin-gonic/gin"
 	"io/ioutil"

@@ -1,14 +1,14 @@
 package dao
 
 import (
-"bastion/database"
-"bastion/pkg/datasource"
+	"bastion/internal/datasource"
+	"bastion/models"
 )
 
-func FindAllProjects(pagesize, page int, order string) (rows []database.StatProject, total int, e error) {
+func FindAllProjects(pagesize, page int, order string) (rows []models.StatProject, total int, e error) {
 	offset := (page - 1) * pagesize
 
-	var data []database.StatProject
+	var data []models.StatProject
 	var count int
 
 	if order == "" {
@@ -16,7 +16,7 @@ func FindAllProjects(pagesize, page int, order string) (rows []database.StatProj
 	}
 
 	var err error
-	err = datasource.GormPool.Model(&database.StatProject{}).Order(order).Count(&count).
+	err = datasource.GormPool.Model(&models.StatProject{}).Order(order).Count(&count).
 		Offset(offset).Limit(pagesize).Find(&data).Error
 
 	if err != nil {
@@ -26,13 +26,12 @@ func FindAllProjects(pagesize, page int, order string) (rows []database.StatProj
 	return data, count, nil
 }
 
-func CreateProjects(info database.StatProject) error {
+func CreateProjects(info models.StatProject) error {
 	err := datasource.GormPool.Create(&info).Error
 	return err
 }
 
-func UpdateProjects(info database.StatProject) error {
-	err := datasource.GormPool.Model(&database.StatProject{}).Updates(&info).Error
+func UpdateProjects(info models.StatProject) error {
+	err := datasource.GormPool.Model(&models.StatProject{}).Updates(&info).Error
 	return err
 }
-

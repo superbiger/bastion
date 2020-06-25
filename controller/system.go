@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"bastion/pkg/response"
+	"bastion/internal/response"
 	"bastion/utils"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"

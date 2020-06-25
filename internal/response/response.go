@@ -1,7 +1,7 @@
 package response
 
 import (
-	"bastion/pkg/errno"
+	"bastion/common/errno"
 	"bastion/utils"
 	"encoding/json"
 	"github.com/gin-gonic/gin"

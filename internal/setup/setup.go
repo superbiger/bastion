@@ -1,8 +1,8 @@
 package setup
 
 import (
-	"bastion/pkg/config"
-	"bastion/pkg/datasource"
+	"bastion/internal/config"
+	"bastion/internal/datasource"
 	"bastion/utils"
 	"flag"
 	"github.com/georgehao/log"

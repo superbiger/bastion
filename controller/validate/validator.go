@@ -1,4 +1,4 @@
-package entry
+package validate
 
 import "github.com/gin-gonic/gin"
 

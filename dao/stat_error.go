@@ -1,22 +1,22 @@
 package dao
 
 import (
-	"bastion/database"
-	"bastion/entry"
-	"bastion/pkg/datasource"
+	"bastion/controller/validate"
+	"bastion/internal/datasource"
+	"bastion/models"
 )
 
-func CreateErrors(data database.StatError) error {
+func CreateErrors(data models.StatError) error {
 	err := datasource.GormPool.Create(&data).Error
 	return err
 }
 
-func FindErrors(query entry.ErrorsQuery, pagesize, page int, order string) (
-	rows []database.StatError, total int, e error) {
+func FindErrors(query validate.ErrorsQuery, pagesize, page int, order string) (
+	rows []models.StatError, total int, e error) {
 
 	offset := (page - 1) * pagesize
 
-	var data []database.StatError
+	var data []models.StatError
 	var count int
 
 	if order == "" {
@@ -24,7 +24,7 @@ func FindErrors(query entry.ErrorsQuery, pagesize, page int, order string) (
 	}
 
 	var err error
-	db := datasource.GormPool.Model(&database.StatError{})
+	db := datasource.GormPool.Model(&models.StatError{})
 
 	if query.AppId != "" {
 		db = db.Where("appid = ?", query.AppId)
@@ -52,7 +52,7 @@ func FindErrors(query entry.ErrorsQuery, pagesize, page int, order string) (
 	return data, count, nil
 }
 
-func UpdateErrors(info database.StatError) error {
-	err := datasource.GormPool.Model(&database.StatError{}).Updates(&info).Error
+func UpdateErrors(info models.StatError) error {
+	err := datasource.GormPool.Model(&models.StatError{}).Updates(&info).Error
 	return err
 }
