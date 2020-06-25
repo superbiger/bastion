@@ -1,13 +1,13 @@
 package dao
 
 import (
-	"bastion/database"
-	"bastion/pkg/datasource"
+	"bastion/internal/datasource"
+	"bastion/models"
 	"github.com/jinzhu/gorm"
 )
 
-func CreateIfNotExistDevice(data database.StatDevice) error {
-	d := database.StatDevice{
+func CreateIfNotExistDevice(data models.StatDevice) error {
+	d := models.StatDevice{
 		UId: data.UId,
 	}
 	err := datasource.GormPool.Where("uid = ?", d.UId).Find(&d).Error
@@ -19,8 +19,8 @@ func CreateIfNotExistDevice(data database.StatDevice) error {
 	return nil
 }
 
-func FindByUid(uid string) (*database.StatDevice, error) {
-	res := database.StatDevice{}
+func FindByUid(uid string) (*models.StatDevice, error) {
+	res := models.StatDevice{}
 	err := datasource.GormPool.Where("uid = ?", uid).Find(&res).Error
 	if err != nil {
 		return nil, err
@@ -28,10 +28,10 @@ func FindByUid(uid string) (*database.StatDevice, error) {
 	return &res, nil
 }
 
-func FindAllDevice(pagesize, page int, order string) (rows []database.StatDevice, total int, e error) {
+func FindAllDevice(pagesize, page int, order string) (rows []models.StatDevice, total int, e error) {
 	offset := (page - 1) * pagesize
 
-	var res []database.StatDevice
+	var res []models.StatDevice
 	var count int
 
 	if order == "" {
@@ -39,7 +39,7 @@ func FindAllDevice(pagesize, page int, order string) (rows []database.StatDevice
 	}
 
 	var err error
-	err = datasource.GormPool.Model(&database.StatDevice{}).Count(&count).
+	err = datasource.GormPool.Model(&models.StatDevice{}).Count(&count).
 		Order(order).Offset(offset).Limit(pagesize).Find(&res).Error
 
 	if err != nil {

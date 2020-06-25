@@ -1,11 +1,11 @@
 package main
 
 import (
-	"context"
 	_ "bastion/docs"
-	"bastion/pkg/setup"
+	"bastion/internal/setup"
 	"bastion/router"
 	"bastion/utils"
+	"context"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 	"log"

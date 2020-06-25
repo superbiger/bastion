@@ -1,8 +1,8 @@
 package dao
 
 import (
-	"bastion/database"
-	"bastion/pkg/datasource"
+	"bastion/internal/datasource"
+	"bastion/models"
 	"bastion/utils"
 	"testing"
 )
@@ -11,7 +11,6 @@ func init() {
 }
 
 func TestLearnGormCreate(t *testing.T) {
-
 
 	//uid := time.Now().Unix()
 	//u := db.MUser{Openid: strconv.Itoa(int(uid)), NickName: "test"}
@@ -24,7 +23,6 @@ func TestLearnGormCreate(t *testing.T) {
 
 func TestLearnGormQuery(t *testing.T) {
 
-
 	//uid := time.Now().Unix()
 	//u := db.MUser{Openid: strconv.Itoa(int(uid)), NickName: "test"}
 	//
@@ -35,7 +33,6 @@ func TestLearnGormQuery(t *testing.T) {
 }
 
 func TestLearnGormUpdate(t *testing.T) {
-
 
 	//uid := time.Now().Unix()
 	//u := db.MUser{Openid: strconv.Itoa(int(uid)), NickName: "test"}
@@ -48,8 +45,7 @@ func TestLearnGormUpdate(t *testing.T) {
 
 func TestLearnGormDelete(t *testing.T) {
 
-
-	e := datasource.GormPool.Unscoped().Delete(database.MUser{}, "nick_name LIKE ?", "test").Error
+	e := datasource.GormPool.Unscoped().Delete(models.MUser{}, "nick_name LIKE ?", "test").Error
 	utils.Must(e)
 
 	//uid := time.Now().Unix()

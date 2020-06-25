@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"bastion/pkg/response"
+	"bastion/internal/response"
 	"errors"
 	"fmt"
 	"github.com/georgehao/log"

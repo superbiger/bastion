@@ -1,8 +1,8 @@
 package dao
 
 import (
-	"bastion/entry"
-	"bastion/pkg/setup"
+	"bastion/controller/validate"
+	"bastion/internal/setup"
 	"bastion/utils"
 	"testing"
 )
@@ -16,9 +16,7 @@ func TestCreateErrors(t *testing.T) {
 }
 
 func TestFindErrorsByAppId(t *testing.T) {
-
-
-	query := entry.ErrorsQuery{}
+	query := validate.ErrorsQuery{}
 	query.AppId = "1"
 
 	data, total, err := FindErrors(query, 10, 1, "")
