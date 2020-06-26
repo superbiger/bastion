@@ -11,7 +11,7 @@ import (
 // 测试
 func InitTest() {
 	var relPath string
-	relPath = "./secret.dev.toml"
+	relPath = "./secret_dev.toml"
 	Ready(relPath)
 }
 
