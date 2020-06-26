@@ -5,7 +5,6 @@ go.sum
 bastion
 out.log
 logs
-api
 test.json
 demo.json
 nodemon.json

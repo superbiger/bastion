@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"bastion/utils"
+	"bastion/pkg"
 	"github.com/gin-gonic/gin"
 	en_translations "gopkg.in/go-playground/validator.v9/translations/en"
 	zh_translations "gopkg.in/go-playground/validator.v9/translations/zh"
@@ -12,19 +12,19 @@ import (
 func Translation() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		locale := c.DefaultQuery("locale", "zh")
-		trans, _ := utils.Uni.GetTranslator(locale)
+		trans, _ := pkg.Uni.GetTranslator(locale)
 		switch locale {
 		case "zh":
-			_ = zh_translations.RegisterDefaultTranslations(utils.Validate, trans)
+			_ = zh_translations.RegisterDefaultTranslations(pkg.Validate, trans)
 			break
 		case "en":
-			_ = en_translations.RegisterDefaultTranslations(utils.Validate, trans)
+			_ = en_translations.RegisterDefaultTranslations(pkg.Validate, trans)
 			break
 		case "zh_tw":
-			_ = zh_tw_translations.RegisterDefaultTranslations(utils.Validate, trans)
+			_ = zh_tw_translations.RegisterDefaultTranslations(pkg.Validate, trans)
 			break
 		default:
-			_ = zh_translations.RegisterDefaultTranslations(utils.Validate, trans)
+			_ = zh_translations.RegisterDefaultTranslations(pkg.Validate, trans)
 			break
 		}
 

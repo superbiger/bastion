@@ -2,7 +2,7 @@ package controller
 
 import (
 	"bastion/internal/response"
-	"bastion/utils"
+	"bastion/pkg"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 	"io/ioutil"
@@ -11,7 +11,7 @@ import (
 type System struct {
 }
 
-var startTime = utils.NowTime()
+var startTime = pkg.NowTime()
 
 // @Summary 系统信息
 // @Produce json
@@ -26,7 +26,7 @@ func (s *System) Info(c *gin.Context) {
 
 	msg.Start = startTime
 
-	str, _ := utils.PastFromNow(startTime)
+	str, _ := pkg.PastFromNow(startTime)
 	msg.StartZh = str
 
 	msg.Env = viper.GetString("base.env")

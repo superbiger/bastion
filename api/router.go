@@ -1,11 +1,11 @@
-package router
+package api
 
 import (
 	"bastion/controller"
 	"bastion/internal/middleware"
 	"bastion/models"
-	"bastion/utils"
-	"bastion/utils/pprof"
+	"bastion/pkg"
+	"bastion/pkg/pprof"
 	"encoding/gob"
 	"github.com/chenjiandongx/ginprom"
 	"github.com/gin-contrib/cors"
@@ -38,8 +38,8 @@ func Init() *gin.Engine {
 
 	// 模版
 	r.SetFuncMap(template.FuncMap{
-		"fmtDate":   utils.FmtDate,
-		"parseHtml": utils.ParseHtml,
+		"fmtDate":   pkg.FmtDate,
+		"parseHtml": pkg.ParseHtml,
 	})
 	r.LoadHTMLGlob("web/views/*")
 

@@ -1,9 +1,9 @@
 #!/bin/bash
 
-workDir=$(pwd)
+workspace=$(pwd)
 output="bastion"
 
-export BASTION=${workDir}
+export BASTION_WORKSPACE=${workspace}
 export GOPROXY=https://goproxy.io,direct
 
 go version

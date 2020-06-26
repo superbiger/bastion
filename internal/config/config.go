@@ -1,7 +1,7 @@
 package config
 
 import (
-	"bastion/utils"
+	"bastion/pkg"
 	"fmt"
 	"github.com/spf13/viper"
 	"path/filepath"
@@ -16,7 +16,7 @@ type configFileInfo struct {
 }
 
 func Load(path string) {
-	file := utils.GetAbsFileWithEnv(path)
+	file := pkg.GetAbsFileWithEnv(path)
 
 	dir := filepath.Dir(file)
 	base := filepath.Base(file)

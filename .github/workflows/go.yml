@@ -85,6 +85,6 @@ jobs:
             {
               "msgtype": "text",
               "text": {
-                  "content": "[deploy] ${{ github.repository }} ———> status:${{ job.status }} ————> actor:${{ github.actor }}"
+                  "content": "[deploy] ${{ github.repository }}  status:${{ job.status }}  actor:${{ github.actor }}"
               }
             }

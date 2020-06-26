@@ -4,9 +4,9 @@ import (
 	"bastion/common/constant"
 	"bastion/common/errno"
 	"bastion/controller/validate"
-	"bastion/dao"
 	"bastion/internal/response"
 	"bastion/models"
+	"bastion/service"
 	"errors"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
@@ -27,7 +27,7 @@ func (s *Monitor) AdminLogin(c *gin.Context) {
 	}
 
 	// 查找
-	user, err := dao.FindAdminUserByUserName(p.Username)
+	user, err := service.FindAdminUserByUserName(p.Username)
 	if err != nil {
 		if gorm.IsRecordNotFoundError(err) {
 			response.Fail(c, errno.ErrorUserNotFound, err)
@@ -65,7 +65,7 @@ func (s *Monitor) AdminCreate(c *gin.Context) {
 		return
 	}
 
-	err = dao.CreateAdminUser(models.StatAdmin{
+	err = service.CreateAdminUser(models.StatAdmin{
 		Username: p.Username,
 		Password: p.Password,
 		Email:    p.Email,
@@ -99,7 +99,7 @@ func (s *Monitor) AdminList(c *gin.Context) {
 		return
 	}
 
-	rows, total, e := dao.FindAllAdminUsers(p.PageSize, p.Page, p.Order)
+	rows, total, e := service.FindAllAdminUsers(p.PageSize, p.Page, p.Order)
 	if e != nil {
 		response.Fail(c, errno.ErrorQueryData, e)
 		return

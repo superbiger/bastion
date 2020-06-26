@@ -1,7 +1,7 @@
-package utils
+package pkg
 
 import (
-	"bastion/utils/humanize"
+	"bastion/pkg/humanize"
 	"encoding/json"
 	"fmt"
 	"github.com/spf13/viper"
@@ -39,11 +39,18 @@ func GetAbsFile(relPath string) (string, error) {
 }
 
 func GetAbsFileWithEnv(relPath string) string {
-	env := os.Getenv("BASTION")
+	env := os.Getenv("BASTION_WORKSPACE")
+	fmt.Println("----------------------------")
+	fmt.Printf("%v \n", env)
 	if env == "" {
-		panic("env BASTION not found")
+		dir, err := os.Getwd()
+		if err != nil {
+			panic(err)
+		}
+		env = dir
 	}
 	configPath := filepath.Join(env, relPath)
+	fmt.Printf("%v \n", configPath)
 	return configPath
 }
 

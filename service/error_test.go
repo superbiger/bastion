@@ -1,9 +1,9 @@
-package dao
+package service
 
 import (
 	"bastion/controller/validate"
 	"bastion/internal/setup"
-	"bastion/utils"
+	"bastion/pkg"
 	"testing"
 )
 
@@ -21,7 +21,7 @@ func TestFindErrorsByAppId(t *testing.T) {
 
 	data, total, err := FindErrors(query, 10, 1, "")
 
-	utils.Must(err)
-	utils.PrintJsonString(total)
-	utils.PrintJsonString(data)
+	pkg.Must(err)
+	pkg.PrintJsonString(total)
+	pkg.PrintJsonString(data)
 }

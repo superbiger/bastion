@@ -1,9 +1,9 @@
-package dao
+package service
 
 import (
 	"bastion/internal/datasource"
 	"bastion/models"
-	"bastion/utils"
+	"bastion/pkg"
 	"testing"
 )
 
@@ -16,7 +16,7 @@ func TestLearnGormCreate(t *testing.T) {
 	//u := db.MUser{Openid: strconv.Itoa(int(uid)), NickName: "test"}
 	//
 	//err := datasource.GormPool.Create(&u).Error
-	//utils.Must(err)
+	//pkg.Must(err)
 	//
 	//fmt.Printf("%v \n", u)
 }
@@ -27,7 +27,7 @@ func TestLearnGormQuery(t *testing.T) {
 	//u := db.MUser{Openid: strconv.Itoa(int(uid)), NickName: "test"}
 	//
 	//err := datasource.GormPool.Create(&u).Error
-	//utils.Must(err)
+	//pkg.Must(err)
 	//
 	//fmt.Printf("%v \n", u)
 }
@@ -38,7 +38,7 @@ func TestLearnGormUpdate(t *testing.T) {
 	//u := db.MUser{Openid: strconv.Itoa(int(uid)), NickName: "test"}
 	//
 	//err := datasource.GormPool.Create(&u).Error
-	//utils.Must(err)
+	//pkg.Must(err)
 	//
 	//fmt.Printf("%v \n", u)
 }
@@ -46,13 +46,13 @@ func TestLearnGormUpdate(t *testing.T) {
 func TestLearnGormDelete(t *testing.T) {
 
 	e := datasource.GormPool.Unscoped().Delete(models.MUser{}, "nick_name LIKE ?", "test").Error
-	utils.Must(e)
+	pkg.Must(e)
 
 	//uid := time.Now().Unix()
 	//u := db.MUser{Openid: strconv.Itoa(int(uid)), NickName: "test"}
 	//
 	//err := datasource.GormPool.Create(&u).Error
-	//utils.Must(err)
+	//pkg.Must(err)
 	//
 	//fmt.Printf("%v \n", u)
 }

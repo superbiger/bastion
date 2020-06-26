@@ -3,8 +3,8 @@ package main
 import (
 	_ "bastion/docs"
 	"bastion/internal/setup"
-	"bastion/router"
-	"bastion/utils"
+	"bastion/api"
+	"bastion/pkg"
 	"context"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
@@ -29,7 +29,7 @@ import (
 // @license.url http://www.apache.org/licenses/LICENSE-2.0.html
 func main() {
 	setup.Boot()
-	utils.InitValidate()
+	pkg.InitValidate()
 
 	HttpServerRun()
 }
@@ -41,7 +41,7 @@ var (
 func HttpServerRun() {
 	gin.SetMode(viper.GetString("base.debug_mode"))
 
-	r := router.Init()
+	r := api.Init()
 
 	httpAddr := viper.GetString("http.addr")
 	HttpSrvHandler = &http.Server{

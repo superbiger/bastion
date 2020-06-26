@@ -3,9 +3,9 @@ package controller
 import (
 	"bastion/common/errno"
 	"bastion/controller/validate"
-	"bastion/dao"
 	"bastion/internal/response"
 	"bastion/models"
+	"bastion/service"
 	"errors"
 	"fmt"
 	"github.com/gin-gonic/gin"
@@ -33,7 +33,7 @@ func (s *Monitor) CreateError(c *gin.Context) {
 		UId:         p.UId,
 	}
 
-	e := dao.CreateErrors(data)
+	e := service.CreateErrors(data)
 	if e != nil {
 		c.String(http.StatusOK, e.Error())
 		return
@@ -55,7 +55,7 @@ func (s *Monitor) ImgCreateError(c *gin.Context) {
 			BrowserUa:     p.BrowserUa,
 			BrowserResult: p.BrowserResult,
 		}
-		if e := dao.CreateIfNotExistDevice(data); e != nil {
+		if e := service.CreateIfNotExistDevice(data); e != nil {
 			c.String(http.StatusOK, e.Error())
 			return
 		}
@@ -74,7 +74,7 @@ func (s *Monitor) ImgCreateError(c *gin.Context) {
 			Colno:       p.Colno,
 			UId:         p.UId,
 		}
-		if e := dao.CreateErrors(data); e != nil {
+		if e := service.CreateErrors(data); e != nil {
 			c.String(http.StatusOK, e.Error())
 			return
 		}
@@ -99,7 +99,7 @@ func (s *Monitor) FindErrorsWithParams(c *gin.Context) {
 		return
 	}
 
-	findErrors, total, e := dao.FindErrors(query, p.PageSize, p.Page, p.Order)
+	findErrors, total, e := service.FindErrors(query, p.PageSize, p.Page, p.Order)
 	if e != nil {
 		response.Fail(c, errno.ErrorQueryData, e)
 		return
@@ -129,7 +129,7 @@ func (s *Monitor) FindDeviceByUid(c *gin.Context) {
 		fmt.Println("", val)
 	}
 
-	res, err := dao.FindByUid(val)
+	res, err := service.FindByUid(val)
 	if err != nil {
 		response.Fail(c, errno.ErrorNotFound, err)
 		return
@@ -144,7 +144,7 @@ func (s *Monitor) FindAllDevice(c *gin.Context) {
 		return
 	}
 
-	device, total, e := dao.FindAllDevice(p.PageSize, p.Page, p.Order)
+	device, total, e := service.FindAllDevice(p.PageSize, p.Page, p.Order)
 	if e != nil {
 		response.Fail(c, errno.ErrorQueryData, e)
 		return
