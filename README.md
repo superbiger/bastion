@@ -21,6 +21,9 @@ go run main.go
 swag init
 ```
 
+#### 实用工具
+http://stming.cn/tool/sql2go.html
+
 ### 问题
 
 #### 运行 xxx.test.go 时候找不到配置文件？
