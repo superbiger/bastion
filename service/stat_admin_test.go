@@ -1,8 +1,8 @@
-package dao
+package service
 
 import (
 	"bastion/models"
-	"bastion/utils"
+	"bastion/pkg"
 	"testing"
 )
 
@@ -13,8 +13,8 @@ func TestFindAllAdminUsers(t *testing.T) {
 		t.Fatal(e)
 	}
 
-	utils.PrintJsonString(rows)
-	utils.Print(total)
+	pkg.PrintJsonString(rows)
+	pkg.Print(total)
 }
 
 // 创建
@@ -69,6 +69,6 @@ func TestFindAdminUserById(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	utils.PrintJsonString(user)
+	pkg.PrintJsonString(user)
 
 }

@@ -1,4 +1,4 @@
-package dao
+package service
 
 import (
 	"bastion/internal/datasource"
@@ -35,4 +35,3 @@ func UpdateBehaviors(info models.StatBehavior) error {
 	err := datasource.GormPool.Model(&models.StatBehavior{}).Updates(&info).Error
 	return err
 }
-

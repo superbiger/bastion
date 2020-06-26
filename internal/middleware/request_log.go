@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"bastion/utils"
+	"bastion/pkg"
 	"bytes"
 	"github.com/georgehao/log"
 	"github.com/gin-gonic/gin"
@@ -11,7 +11,7 @@ import (
 )
 
 func RequestInLog(c *gin.Context) {
-	traceContext := utils.NewTrace()
+	traceContext := pkg.NewTrace()
 	if traceId := c.Request.Header.Get("com-header-rid"); traceId != "" {
 		traceContext.TraceId = traceId
 	}
@@ -45,7 +45,7 @@ func RequestOutLog(c *gin.Context) {
 	startExecTime, _ := st.(time.Time)
 
 	trace, _ := c.Get("trace")
-	traceContext, _ := trace.(*utils.TraceContext)
+	traceContext, _ := trace.(*pkg.TraceContext)
 	SpanId := ""
 	if traceContext != nil {
 		SpanId = traceContext.SpanId

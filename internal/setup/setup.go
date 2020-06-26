@@ -3,7 +3,7 @@ package setup
 import (
 	"bastion/internal/config"
 	"bastion/internal/datasource"
-	"bastion/utils"
+	"bastion/pkg"
 	"flag"
 	"github.com/georgehao/log"
 )
@@ -28,13 +28,13 @@ func Ready(relPath string)  {
 	config.Load(relPath)
 
 	// 日志
-	s := utils.GetAbsFileWithEnv("./logs/bastion.log")
+	s := pkg.GetAbsFileWithEnv("./logs/bastion.log")
 	log.Init(s, log.DebugLevel, true, log.SetCaller(true))
 
 	var err error
 	err = datasource.NewRedisClient()
-	utils.Must(err)
+	pkg.Must(err)
 
 	err = datasource.InitGorm()
-	utils.Must(err)
+	pkg.Must(err)
 }

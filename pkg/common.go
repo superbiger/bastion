@@ -1,7 +1,7 @@
-package utils
+package pkg
 
 import (
-	"bastion/utils/humanize"
+	"bastion/pkg/humanize"
 	"encoding/json"
 	"fmt"
 	"github.com/spf13/viper"

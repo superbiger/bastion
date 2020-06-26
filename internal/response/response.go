@@ -2,7 +2,7 @@ package response
 
 import (
 	"bastion/common/errno"
-	"bastion/utils"
+	"bastion/pkg"
 	"encoding/json"
 	"github.com/gin-gonic/gin"
 	"strings"
@@ -28,7 +28,7 @@ type PageData struct {
 
 func getTraceId(c *gin.Context) string {
 	trace, _ := c.Get("trace")
-	traceContext, _ := trace.(*utils.TraceContext)
+	traceContext, _ := trace.(*pkg.TraceContext)
 	traceId := ""
 	if traceContext != nil {
 		traceId = traceContext.TraceId

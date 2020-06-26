@@ -3,8 +3,8 @@ package controller
 import (
 	"bastion/common/errno"
 	"bastion/controller/validate"
-	"bastion/dao"
 	"bastion/internal/response"
+	"bastion/service"
 	"github.com/gin-gonic/gin"
 )
 
@@ -24,7 +24,7 @@ func (s *Monitor) FindAllProjects(c *gin.Context) {
 		return
 	}
 
-	rows, total, e := dao.FindAllProjects(p.PageSize, p.Page, p.Order)
+	rows, total, e := service.FindAllProjects(p.PageSize, p.Page, p.Order)
 	if e != nil {
 		response.Fail(c, errno.ErrorQueryData, e)
 		return

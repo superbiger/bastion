@@ -1,7 +1,7 @@
 package validate
 
 import (
-	"bastion/utils"
+	"bastion/pkg"
 	"errors"
 	"fmt"
 	"github.com/gin-gonic/gin"
@@ -18,10 +18,10 @@ func CommValidator(ctx *gin.Context, i interface{}) error {
 	v := ctx.Value("trans")
 	trans, ok := v.(ut.Translator)
 	if !ok {
-		trans, _ = utils.Uni.GetTranslator("zh")
+		trans, _ = pkg.Uni.GetTranslator("zh")
 	}
 
-	err := utils.Validate.Struct(i)
+	err := pkg.Validate.Struct(i)
 	if err != nil {
 		errs := err.(validator.ValidationErrors)
 		var sliceErrs []string
