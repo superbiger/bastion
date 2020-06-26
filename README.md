@@ -1,3 +1,6 @@
+## bastion 前端监控系统服务端（开发中）
+![build](https://github.com/dev-escort/bastion/workflows/build/badge.svg)
+
 ### 开发
 
 #### 起步
@@ -36,3 +39,8 @@ vi ~/.zshrc
 export BASTION_WORKSPACE="你的项目地址"
 source ~/.zshrc
 ```
+
+
+### 详细文档（建设中）
+
+https://www.yuque.com/huang/sb8033
